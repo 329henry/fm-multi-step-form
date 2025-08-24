@@ -10,27 +10,21 @@ type Story = StoryObj<typeof PlanButton>
 
 export const Default: Story = {
   args: {
-    plan: {
-      name: 'Arcade',
-      price: '$9/mo'
-    }
+    plan: 'ARCADE',
+    isYearly: false
   }
 }
 
 export const Advanced: Story = {
   args: {
-    plan: {
-      name: 'Advanced',
-      price: '$12/mo'
-    }
+    plan: 'ADVANCED',
+    isYearly: false
   }
 }
 
 export const Pro: Story = {
   args: {
-    plan: {
-      name: 'Pro',
-      price: '$15/mo'
-    }
+    plan: 'PRO',
+    isYearly: false
   }
 }

@@ -13,7 +13,6 @@ export default function StepLabel({ step, currentStep }: { step: TStep; currentS
   const isActive = step === currentStep
 
   return (
-    // <div className="w-[274px] h-[568px] bg-no-repeat bg-sidebar-mobile md:bg-sidebar-desktop bg-left-top p-8 rounded-lg flex md:flex-col gap-4 md:gap-8">
     <div className="flex items-center gap-4 md:gap-6">
       <div
         className={`w-8 h-8 md:w-10 md:h-10 rounded-full border border-white text-white font-bold flex items-center justify-center ${isActive ? 'bg-light-blue text-denim border-denim' : 'bg-transparent'}`}
@@ -25,7 +24,5 @@ export default function StepLabel({ step, currentStep }: { step: TStep; currentS
         <div className="text-white font-bold text-lg">{`${stepInfo[step].label}`}</div>
       </div>
     </div>
-
-    // </div>
   )
 }
