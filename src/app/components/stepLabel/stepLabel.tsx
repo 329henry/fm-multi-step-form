@@ -2,7 +2,7 @@
 
 export type TStep = 'YOUR_INFO' | 'SELECT_PLAN' | 'ADD_ONS' | 'SUMMARY'
 
-const stepInfo = {
+export const stepInfo = {
   YOUR_INFO: { label: 'Your Info', number: 1 },
   SELECT_PLAN: { label: 'Select PLan', number: 2 },
   ADD_ONS: { label: 'Add Ons', number: 3 },
@@ -13,7 +13,7 @@ export default function StepLabel({ step, currentStep }: { step: TStep; currentS
   const isActive = step === currentStep
 
   return (
-    <div className="flex items-center gap-4 md:gap-6">
+    <div className="w-[228px] flex items-center gap-4 md:gap-6">
       <div
         className={`w-8 h-8 md:w-10 md:h-10 rounded-full border border-white text-white font-bold flex items-center justify-center ${isActive ? 'bg-light-blue text-denim border-denim' : 'bg-transparent'}`}
       >
