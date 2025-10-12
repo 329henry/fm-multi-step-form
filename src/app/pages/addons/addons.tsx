@@ -2,10 +2,18 @@
 
 import AddonItem from '@/app/components/addonItem/addonItem'
 import Title from '@/app/components/title/title'
+import { addonData } from '@/app/constants/addonData'
+import { usePlanDataStore } from '@/app/store/usePlanDataStore'
 import { useStepStore } from '@/app/store/useStepStore'
 
 export default function Addons() {
   const setStep = useStepStore((state) => state.setStep)
+  const addonList = usePlanDataStore((state) => state.addonList)
+  const isYearly = usePlanDataStore((state) => state.isYearly)
+  const setAddonList = usePlanDataStore((state) => state.setAddonList)
+  const isAddonActive = (item: keyof typeof addonData) => {
+    return addonList.includes(item)
+  }
 
   const onClickNext = () => {
     setStep('SUMMARY')
@@ -15,14 +23,37 @@ export default function Addons() {
     setStep('SELECT_PLAN')
   }
 
+  const onChange = (addons: keyof typeof addonData) => {
+    if (addonList.includes(addons)) {
+      setAddonList(addonList.filter((item) => item !== addons))
+    } else {
+      setAddonList([...addonList, addons])
+    }
+  }
+
   return (
     <div className="flex justify-center w-full">
       <div className="w-[450px] flex flex-col h-full py-6">
         <Title name="ADD_ONS" />
         <div className="flex flex-col gap-4 mt-8">
-          <AddonItem item="ONLINE_SERVICE" isYearly={false} />
-          <AddonItem item="LARGE_STORAGE" isYearly={false} />
-          <AddonItem item="CUSTOMIZABLE_PROFILE" isYearly={false} />
+          <AddonItem
+            item="ONLINE_SERVICE"
+            isYearly={isYearly}
+            isActive={isAddonActive('ONLINE_SERVICE')}
+            onChange={onChange}
+          />
+          <AddonItem
+            item="LARGE_STORAGE"
+            isYearly={isYearly}
+            isActive={isAddonActive('LARGE_STORAGE')}
+            onChange={onChange}
+          />
+          <AddonItem
+            item="CUSTOMIZABLE_PROFILE"
+            isYearly={isYearly}
+            isActive={isAddonActive('CUSTOMIZABLE_PROFILE')}
+            onChange={onChange}
+          />
         </div>
         <div className="mt-auto flex justify-between">
           <button className="h-[48px] text-dark-grey" onClick={onClickBack}>

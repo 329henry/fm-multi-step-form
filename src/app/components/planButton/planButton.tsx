@@ -2,21 +2,24 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { planDetails } from '@constants/planDetails'
 
 export type PlanType = 'ARCADE' | 'ADVANCED' | 'PRO'
 
-const planDetails = {
-  ARCADE: { name: 'Arcade', monthlyPrice: '$9/mo', yearlyPrice: '$90/yr' },
-  ADVANCED: { name: 'Advanced', monthlyPrice: '$12/mo', yearlyPrice: '$120/yr' },
-  PRO: { name: 'Pro', monthlyPrice: '$15/mo', yearlyPrice: '$150/yr' }
-}
-
-export default function PlanButton({ plan, isYearly }: { plan: PlanType; isYearly: boolean }) {
+export default function PlanButton({
+  plan,
+  isYearly,
+  onClickPlan
+}: {
+  plan: PlanType
+  isYearly: boolean
+  onClickPlan: (plan: PlanType) => void
+}) {
   const [isActive, setIsActive] = useState(false)
 
   const onClick = () => {
     setIsActive(!isActive)
-    console.log(`Selected plan: ${planDetails[plan].name}`)
+    onClickPlan(plan)
   }
 
   return (
