@@ -3,9 +3,19 @@
 import { useState } from 'react'
 import PlanButton from '@/app/components/planButton/planButton'
 import Title from '@/app/components/title/title'
+import { useStepStore } from '@/app/store/useStepStore'
 
 export default function PlanSelect() {
   const [isYearly, setIsYearly] = useState(false)
+  const setStep = useStepStore((state) => state.setStep)
+
+  const onClickNext = () => {
+    setStep('ADD_ONS')
+  }
+
+  const onClickBack = () => {
+    setStep('YOUR_INFO')
+  }
 
   return (
     <div className="flex justify-center w-full">
@@ -32,9 +42,13 @@ export default function PlanSelect() {
           </div>
         </div>
         <div className="mt-auto flex justify-between">
-          <button className="h-[48px] text-dark-grey">Go Back</button>
+          <button className="h-[48px] text-dark-grey" onClick={onClickBack}>
+            Go Back
+          </button>
           <div className="flex justify-end">
-            <button className="h-[48px] w-[123px] bg-denim rounded-lg text-white">Next Step</button>
+            <button className="h-[48px] w-[123px] bg-denim rounded-lg text-white" onClick={onClickNext}>
+              Next Step
+            </button>
           </div>
         </div>
       </div>

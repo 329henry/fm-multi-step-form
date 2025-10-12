@@ -1,7 +1,20 @@
+'use client'
+
 import AddonItem from '@/app/components/addonItem/addonItem'
 import Title from '@/app/components/title/title'
+import { useStepStore } from '@/app/store/useStepStore'
 
 export default function Addons() {
+  const setStep = useStepStore((state) => state.setStep)
+
+  const onClickNext = () => {
+    setStep('SUMMARY')
+  }
+
+  const onClickBack = () => {
+    setStep('SELECT_PLAN')
+  }
+
   return (
     <div className="flex justify-center w-full">
       <div className="w-[450px] flex flex-col h-full py-6">
@@ -12,9 +25,13 @@ export default function Addons() {
           <AddonItem item="CUSTOMIZABLE_PROFILE" isYearly={false} />
         </div>
         <div className="mt-auto flex justify-between">
-          <button className="h-[48px] text-dark-grey">Go Back</button>
+          <button className="h-[48px] text-dark-grey" onClick={onClickBack}>
+            Go Back
+          </button>
           <div className="flex justify-end">
-            <button className="h-[48px] w-[123px] bg-denim rounded-lg text-white">Next Step</button>
+            <button className="h-[48px] w-[123px] bg-denim rounded-lg text-white" onClick={onClickNext}>
+              Next Step
+            </button>
           </div>
         </div>
       </div>

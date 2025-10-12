@@ -30,3 +30,7 @@ body {
   color: var(--foreground);
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
 }
+
+button {
+  cursor: pointer;
+}

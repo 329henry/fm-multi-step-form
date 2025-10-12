@@ -15,7 +15,7 @@ export default function StepLabel({ step, currentStep }: { step: TStep; currentS
   return (
     <div className="w-[228px] flex items-center gap-4 md:gap-6">
       <div
-        className={`w-8 h-8 md:w-10 md:h-10 rounded-full border border-white text-white font-bold flex items-center justify-center ${isActive ? 'bg-light-blue text-denim border-denim' : 'bg-transparent'}`}
+        className={`w-8 h-8 md:w-10 md:h-10 rounded-full  font-bold flex items-center justify-center ${isActive ? 'bg-light-blue text-denim border-denim' : 'border border-white bg-transparent text-white'}`}
       >
         {stepInfo[step].number}
       </div>

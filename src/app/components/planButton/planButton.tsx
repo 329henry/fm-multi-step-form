@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 
 export type PlanType = 'ARCADE' | 'ADVANCED' | 'PRO'
 
@@ -11,10 +12,17 @@ const planDetails = {
 }
 
 export default function PlanButton({ plan, isYearly }: { plan: PlanType; isYearly: boolean }) {
+  const [isActive, setIsActive] = useState(false)
+
+  const onClick = () => {
+    setIsActive(!isActive)
+    console.log(`Selected plan: ${planDetails[plan].name}`)
+  }
+
   return (
     <div
-      className="w-[130px] h-[160px] flex flex-col items-start justify-between border border-grey rounded-lg p-4"
-      onClick={() => console.log(`Selected plan: ${planDetails[plan].name}`)}
+      className={`w-[130px] h-[160px] flex flex-col items-start justify-between border border-grey rounded-lg p-4 cursor-pointer hover:border-purple hover:bg-light-grey ${isActive ? 'border-purple bg-light-grey' : 'border-grey bg-white'}`}
+      onClick={onClick}
     >
       <Image
         src={`/icon-${planDetails[plan].name.toLowerCase()}.svg`}
