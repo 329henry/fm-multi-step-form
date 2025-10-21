@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { addonData } from '../constants/addonData'
+import { addonData } from '@constants/addonData'
 
 interface PlanDataState {
   plan: 'ARCADE' | 'ADVANCED' | 'PRO' | null
