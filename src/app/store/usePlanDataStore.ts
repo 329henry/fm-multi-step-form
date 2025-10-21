@@ -1,13 +1,14 @@
 import { create } from 'zustand'
-import { addonData } from '@constants/addonData'
+import { AddonType } from '@constants/addonData'
+import { PlanType } from '@constants/planDetails'
 
 interface PlanDataState {
-  plan: 'ARCADE' | 'ADVANCED' | 'PRO' | null
-  addonList: (keyof typeof addonData)[]
+  plan: PlanType | null
+  addonList: AddonType[]
   isYearly: boolean
-  setPlan: (plan: 'ARCADE' | 'ADVANCED' | 'PRO') => void
+  setPlan: (plan: PlanType) => void
   setIsYearly: (isYearly: boolean) => void
-  setAddonList: (addons: (keyof typeof addonData)[]) => void
+  setAddonList: (addons: AddonType[]) => void
   toggleBillingCycle: () => void
 }
 

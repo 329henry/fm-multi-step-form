@@ -1,6 +1,6 @@
 'use client'
 
-import { addonData } from '@/app/constants/addonData'
+import { addonData, AddonType } from '@/app/constants/addonData'
 
 export default function AddonItem({
   item,
@@ -8,10 +8,10 @@ export default function AddonItem({
   isActive,
   onChange
 }: {
-  item: keyof typeof addonData
+  item: AddonType
   isYearly: boolean
   isActive: boolean
-  onChange: (addons: keyof typeof addonData) => void
+  onChange: (addons: AddonType) => void
 }) {
   const onClick = () => {
     onChange(item)

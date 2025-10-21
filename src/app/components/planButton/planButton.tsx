@@ -3,8 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { planDetails } from '@constants/planDetails'
-
-export type PlanType = 'ARCADE' | 'ADVANCED' | 'PRO'
+import { PlanType } from '@constants/planDetails'
 
 export default function PlanButton({
   plan,
@@ -37,7 +36,7 @@ export default function PlanButton({
       <div className="flex flex-col items-start">
         <div className="text-lg text-denim font-bold">{planDetails[plan].name}</div>
         <div className="text-sm text-dark-grey">
-          {isYearly ? planDetails[plan].yearlyPrice : planDetails[plan].monthlyPrice}
+          {isYearly ? `$${planDetails[plan].yearlyPrice}/yr` : `$${planDetails[plan].monthlyPrice}/mo`}
         </div>
         {isYearly && <div className="text-xs text-purple">2 months free</div>}
       </div>

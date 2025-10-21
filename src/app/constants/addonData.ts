@@ -1,3 +1,9 @@
+export enum AddonType {
+  ONLINE_SERVICE = 'ONLINE_SERVICE',
+  LARGE_STORAGE = 'LARGE_STORAGE',
+  CUSTOMIZABLE_PROFILE = 'CUSTOMIZABLE_PROFILE'
+}
+
 export const addonData = {
   ONLINE_SERVICE: {
     title: 'Online service',

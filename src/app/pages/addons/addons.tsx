@@ -2,7 +2,7 @@
 
 import AddonItem from '@/app/components/addonItem/addonItem'
 import Title from '@/app/components/title/title'
-import { addonData } from '@/app/constants/addonData'
+import { AddonType } from '@/app/constants/addonData'
 import { usePlanDataStore } from '@/app/store/usePlanDataStore'
 import { useStepStore } from '@/app/store/useStepStore'
 
@@ -11,7 +11,7 @@ export default function Addons() {
   const addonList = usePlanDataStore((state) => state.addonList)
   const isYearly = usePlanDataStore((state) => state.isYearly)
   const setAddonList = usePlanDataStore((state) => state.setAddonList)
-  const isAddonActive = (item: keyof typeof addonData) => {
+  const isAddonActive = (item: AddonType) => {
     return addonList.includes(item)
   }
 
@@ -23,7 +23,7 @@ export default function Addons() {
     setStep('SELECT_PLAN')
   }
 
-  const onChange = (addons: keyof typeof addonData) => {
+  const onChange = (addons: AddonType) => {
     if (addonList.includes(addons)) {
       setAddonList(addonList.filter((item) => item !== addons))
     } else {
@@ -37,21 +37,21 @@ export default function Addons() {
         <Title name="ADD_ONS" />
         <div className="flex flex-col gap-4 mt-8">
           <AddonItem
-            item="ONLINE_SERVICE"
+            item={AddonType.ONLINE_SERVICE}
             isYearly={isYearly}
-            isActive={isAddonActive('ONLINE_SERVICE')}
+            isActive={isAddonActive(AddonType.ONLINE_SERVICE)}
             onChange={onChange}
           />
           <AddonItem
-            item="LARGE_STORAGE"
+            item={AddonType.LARGE_STORAGE}
             isYearly={isYearly}
-            isActive={isAddonActive('LARGE_STORAGE')}
+            isActive={isAddonActive(AddonType.LARGE_STORAGE)}
             onChange={onChange}
           />
           <AddonItem
-            item="CUSTOMIZABLE_PROFILE"
+            item={AddonType.CUSTOMIZABLE_PROFILE}
             isYearly={isYearly}
-            isActive={isAddonActive('CUSTOMIZABLE_PROFILE')}
+            isActive={isAddonActive(AddonType.CUSTOMIZABLE_PROFILE)}
             onChange={onChange}
           />
         </div>

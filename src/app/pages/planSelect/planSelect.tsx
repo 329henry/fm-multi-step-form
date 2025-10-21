@@ -4,6 +4,7 @@ import PlanButton from '@/app/components/planButton/planButton'
 import Title from '@/app/components/title/title'
 import { useStepStore } from '@/app/store/useStepStore'
 import { usePlanDataStore } from '@/app/store/usePlanDataStore'
+import { PlanType } from '@/app/constants/planDetails'
 
 export default function PlanSelect() {
   const isYearly = usePlanDataStore((state) => state.isYearly)
@@ -11,7 +12,7 @@ export default function PlanSelect() {
   const setStep = useStepStore((state) => state.setStep)
   const setIsYearly = usePlanDataStore((state) => state.setIsYearly)
 
-  const onClickPlan = (selectedPlan: 'ARCADE' | 'ADVANCED' | 'PRO') => {
+  const onClickPlan = (selectedPlan: PlanType) => {
     setPlan(selectedPlan)
   }
 
@@ -32,9 +33,9 @@ export default function PlanSelect() {
       <div className="w-[450px] flex flex-col h-full py-6">
         <Title name="SELECT_PLAN" />
         <div className="flex justify-between mt-12 mb-4">
-          <PlanButton plan="ARCADE" isYearly={isYearly} onClickPlan={onClickPlan} />
-          <PlanButton plan="ADVANCED" isYearly={isYearly} onClickPlan={onClickPlan} />
-          <PlanButton plan="PRO" isYearly={isYearly} onClickPlan={onClickPlan} />
+          <PlanButton plan={PlanType.ARCADE} isYearly={isYearly} onClickPlan={onClickPlan} />
+          <PlanButton plan={PlanType.ADVANCED} isYearly={isYearly} onClickPlan={onClickPlan} />
+          <PlanButton plan={PlanType.PRO} isYearly={isYearly} onClickPlan={onClickPlan} />
         </div>
         <div className="h-[48px] flex bg-light-grey">
           <div className="m-auto flex items-center gap-4">

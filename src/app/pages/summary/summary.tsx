@@ -5,8 +5,19 @@ import Image from 'next/image'
 import Title from '@/app/components/title/title'
 import { useStepStore } from '@/app/store/useStepStore'
 import { usePlanDataStore } from '@/app/store/usePlanDataStore'
-import { planDetails } from '@constants/planDetails'
-import { addonData } from '@/app/constants/addonData'
+import { planDetails, PlanType } from '@constants/planDetails'
+import { addonData, AddonType } from '@/app/constants/addonData'
+
+const calculateTotal = (plan: PlanType | null, isYearly: boolean, addonList: AddonType[]) => {
+  let total = 0
+  if (plan) {
+    total += isYearly ? planDetails[plan].yearlyPrice : planDetails[plan].monthlyPrice
+    addonList.forEach((item) => {
+      total += isYearly ? addonData[item].yearly : addonData[item].monthly
+    })
+  }
+  return `$${total}${isYearly ? '/yr' : '/mo'}`
+}
 
 export default function Summary() {
   const [isConfirm, setIsConfirm] = useState(false)
@@ -60,7 +71,7 @@ function PlanSummary({ setIsConfirm }: { setIsConfirm: (value: boolean) => void 
                 </div>
 
                 <div className="text-sm text-denim font-bold text-[16px]">
-                  {isYearly ? planDetails?.[plan]?.yearlyPrice : planDetails?.[plan]?.monthlyPrice}
+                  {isYearly ? `$${planDetails?.[plan]?.yearlyPrice}/yr` : `$${planDetails?.[plan]?.monthlyPrice}/mo`}
                 </div>
               </div>
               {addonList.length > 0 ? (
@@ -69,7 +80,7 @@ function PlanSummary({ setIsConfirm }: { setIsConfirm: (value: boolean) => void 
                     <div key={item} className="flex justify-between py-1">
                       <div className="text-sm text-dark-grey">{addonData?.[item]?.title}</div>
                       <div className="text-sm text-dark-grey ">
-                        {isYearly ? `+${addonData?.[item]?.yearly}/yr` : ` +${addonData?.[item]?.monthly}/mo`}
+                        {isYearly ? `+$${addonData?.[item]?.yearly}/yr` : ` +$${addonData?.[item]?.monthly}/mo`}
                       </div>
                     </div>
                   ))}
@@ -77,6 +88,12 @@ function PlanSummary({ setIsConfirm }: { setIsConfirm: (value: boolean) => void 
               ) : null}
             </div>
           ) : null}
+        </div>
+      </div>
+      <div>
+        <div className="flex justify-between items-center mt-6 px-4">
+          <div className="text-dark-grey">Total (per {isYearly ? 'year' : 'month'})</div>
+          <div className="text-purple font-bold text-lg">{calculateTotal(plan, isYearly, addonList)}</div>
         </div>
       </div>
       <div className="mt-auto flex justify-between">
