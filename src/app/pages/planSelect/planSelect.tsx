@@ -7,6 +7,7 @@ import { usePlanDataStore } from '@/app/store/usePlanDataStore'
 import { PlanType } from '@/app/constants/planDetails'
 
 export default function PlanSelect() {
+  const plan = usePlanDataStore((state) => state.plan)
   const isYearly = usePlanDataStore((state) => state.isYearly)
   const setPlan = usePlanDataStore((state) => state.setPlan)
   const setStep = useStepStore((state) => state.setStep)
@@ -33,9 +34,24 @@ export default function PlanSelect() {
       <div className="w-[450px] flex flex-col h-full py-6">
         <Title name="SELECT_PLAN" />
         <div className="flex justify-between mt-12 mb-4">
-          <PlanButton plan={PlanType.ARCADE} isYearly={isYearly} onClickPlan={onClickPlan} />
-          <PlanButton plan={PlanType.ADVANCED} isYearly={isYearly} onClickPlan={onClickPlan} />
-          <PlanButton plan={PlanType.PRO} isYearly={isYearly} onClickPlan={onClickPlan} />
+          <PlanButton
+            plan={PlanType.ARCADE}
+            isSelected={plan === PlanType.ARCADE}
+            isYearly={isYearly}
+            onClickPlan={onClickPlan}
+          />
+          <PlanButton
+            plan={PlanType.ADVANCED}
+            isSelected={plan === PlanType.ADVANCED}
+            isYearly={isYearly}
+            onClickPlan={onClickPlan}
+          />
+          <PlanButton
+            plan={PlanType.PRO}
+            isSelected={plan === PlanType.PRO}
+            isYearly={isYearly}
+            onClickPlan={onClickPlan}
+          />
         </div>
         <div className="h-[48px] flex bg-light-grey">
           <div className="m-auto flex items-center gap-4">

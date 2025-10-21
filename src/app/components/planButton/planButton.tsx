@@ -1,29 +1,27 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
 import { planDetails } from '@constants/planDetails'
 import { PlanType } from '@constants/planDetails'
 
 export default function PlanButton({
   plan,
+  isSelected = false,
   isYearly,
   onClickPlan
 }: {
   plan: PlanType
+  isSelected: boolean
   isYearly: boolean
   onClickPlan: (plan: PlanType) => void
 }) {
-  const [isActive, setIsActive] = useState(false)
-
   const onClick = () => {
-    setIsActive(!isActive)
     onClickPlan(plan)
   }
 
   return (
     <div
-      className={`w-[130px] h-[160px] flex flex-col items-start justify-between border border-grey rounded-lg p-4 cursor-pointer hover:border-purple hover:bg-light-grey ${isActive ? 'border-purple bg-light-grey' : 'border-grey bg-white'}`}
+      className={`w-[130px] h-[160px] flex flex-col items-start justify-between border border-grey rounded-lg p-4 cursor-pointer hover:border-purple hover:bg-light-grey ${isSelected ? 'border-purple bg-light-grey' : 'border-grey bg-white'}`}
       onClick={onClick}
     >
       <Image
