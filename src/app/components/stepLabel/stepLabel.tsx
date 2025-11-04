@@ -13,13 +13,13 @@ export default function StepLabel({ step, currentStep }: { step: TStep; currentS
   const isActive = step === currentStep
 
   return (
-    <div className="w-[228px] flex items-center gap-4 md:gap-6">
+    <div className="w-auto md:w-full max-w-[228px] flex items-center md:gap-6">
       <div
-        className={`w-8 h-8 md:w-10 md:h-10 rounded-full  font-bold flex items-center justify-center ${isActive ? 'bg-light-blue text-denim border-denim' : 'border border-white bg-transparent text-white'}`}
+        className={`w-8 h-8 md:w-10 md:h-10 rounded-full font-bold flex items-center justify-center ${isActive ? 'bg-light-blue text-denim border-denim' : 'border border-white bg-transparent text-white'}`}
       >
         {stepInfo[step].number}
       </div>
-      <div className="hidden md:flex flex-col">
+      <div className="hidden md:flex md:flex-col">
         <div className="text-sm text-light-blue tracking-widest">{`STEP ${stepInfo[step].number}`}</div>
         <div className="text-white font-bold text-lg">{`${stepInfo[step].label}`}</div>
       </div>

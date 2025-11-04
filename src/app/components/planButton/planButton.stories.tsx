@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import PlanButton from './planButton'
+import { PlanType } from '@/app/constants/planDetails'
 
 const meta: Meta<typeof PlanButton> = {
   component: PlanButton
@@ -10,21 +11,21 @@ type Story = StoryObj<typeof PlanButton>
 
 export const Default: Story = {
   args: {
-    plan: 'ARCADE',
+    plan: PlanType.ARCADE,
     isYearly: false
   }
 }
 
 export const Advanced: Story = {
   args: {
-    plan: 'ADVANCED',
+    plan: PlanType.ADVANCED,
     isYearly: false
   }
 }
 
 export const Pro: Story = {
   args: {
-    plan: 'PRO',
+    plan: PlanType.PRO,
     isYearly: false
   }
 }

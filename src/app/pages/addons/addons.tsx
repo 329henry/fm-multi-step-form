@@ -32,8 +32,8 @@ export default function Addons() {
   }
 
   return (
-    <div className="flex justify-center w-full">
-      <div className="w-[450px] flex flex-col h-full py-6">
+    <div className="w-full h-full flex flex-col justify-between">
+      <div>
         <Title name="ADD_ONS" />
         <div className="flex flex-col gap-4 mt-8">
           <AddonItem
@@ -55,15 +55,15 @@ export default function Addons() {
             onChange={onChange}
           />
         </div>
-        <div className="mt-auto flex justify-between">
+      </div>
+      <div className="w-full md:static">
+        <div className="h-[72px] bg-white fixed left-0 right-0 bottom-0 flex justify-between items-center px-4 md:px-0 md:static md:h-auto md:bg-transparent">
           <button className="h-[48px] text-dark-grey" onClick={onClickBack}>
             Go Back
           </button>
-          <div className="flex justify-end">
-            <button className="h-[48px] w-[123px] bg-denim rounded-lg text-white" onClick={onClickNext}>
-              Next Step
-            </button>
-          </div>
+          <button className="h-[48px] w-[123px] bg-denim rounded-lg text-white" onClick={onClickNext}>
+            Next Step
+          </button>
         </div>
       </div>
     </div>

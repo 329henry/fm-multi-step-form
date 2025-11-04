@@ -54,11 +54,11 @@ export default function YourInfo() {
   }, [infoData, reset])
 
   return (
-    <div className="flex justify-center w-full">
-      <div className="w-[450px] flex flex-col h-full py-6">
-        <Title name="YOUR_INFO" />
-        <form className="flex flex-col justify-between gap-4 mt-6 flex-grow" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-4">
+    <div className="w-full h-full flex flex-col">
+      <form className="flex flex-col gap-4 flex-grow justify-between" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col">
+          <Title name="YOUR_INFO" />
+          <div className="flex flex-col mt-4 gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between">
                 <label htmlFor="name" className="text-denim">
@@ -119,13 +119,15 @@ export default function YourInfo() {
               />
             </div>
           </div>
-          <div className="flex justify-end">
+        </div>
+        <div className="w-full md:static">
+          <div className="h-[72px] bg-white fixed left-0 right-0 bottom-0 flex justify-end items-center px-4 md:px-0 md:static md:h-auto  md:justify-end md:bg-transparent">
             <button type="submit" className="h-[48px] w-[123px] bg-denim rounded-lg text-white">
               Next Step
             </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   )
 }
