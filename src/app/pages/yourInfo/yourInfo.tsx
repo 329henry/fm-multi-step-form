@@ -83,11 +83,11 @@ export default function YourInfo() {
                 <label htmlFor="email" className="text-denim">
                   Email Address
                 </label>
-                {errors.email?.type === 'required' && (
+                {errors.email ? (
                   <p className="text-red text-sm mt-1" role="alert">
                     {errors.email.message}
                   </p>
-                )}
+                ) : null}
               </div>
 
               <input
@@ -95,7 +95,13 @@ export default function YourInfo() {
                 type="email"
                 placeholder="e.g. stephenking@lorem.com"
                 className={`border rounded-md p-2 text-black ${errors.email ? 'border-red' : 'border-grey'}`}
-                {...register('email', { required: 'Please fill in a valid email address' })}
+                {...register('email', {
+                  required: 'Please fill in your email address',
+                  pattern: {
+                    value: /^[^@]+@[^@]+\.[^@]+$/,
+                    message: 'Please enter a valid email address'
+                  }
+                })}
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -103,19 +109,25 @@ export default function YourInfo() {
                 <label htmlFor="phone" className="text-denim">
                   Phone Number
                 </label>
-                {errors.phone?.type === 'required' && (
+                {errors.phone ? (
                   <p className="text-red text-sm mt-1" role="alert">
                     {errors.phone.message}
                   </p>
-                )}
+                ) : null}
               </div>
 
               <input
                 id="phone"
                 type="tel"
                 placeholder="e.g. +1 234 567 890"
-                className={`border rounded-md p-2 text-black ${errors.email ? 'border-red' : 'border-grey'}`}
-                {...register('phone', { required: 'Please fill in your phone number' })}
+                className={`border rounded-md p-2 text-black ${errors.phone ? 'border-red' : 'border-grey'}`}
+                {...register('phone', {
+                  required: 'Please fill in your phone number',
+                  pattern: {
+                    value: /^\+?[0-9\s()-]{7,18}$/,
+                    message: 'Please enter a valid phone number'
+                  }
+                })}
               />
             </div>
           </div>
