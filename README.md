@@ -19,6 +19,9 @@ Users should be able to:
   - A step is submitted, but no selection has been made
 
 ### Screenshot
+<img width="508" height="400" alt="Screenshot 2025-11-04 at 22 35 57" src="https://github.com/user-attachments/assets/fd0a222a-3f96-4d9a-a704-e6d1314893c8" />
+<img width="332" height="400" alt="Screenshot 2025-11-04 at 22 36 34" src="https://github.com/user-attachments/assets/f6afe56c-549d-4261-a6e6-8a573bc322c3" />
+
 
 ### Links
 
